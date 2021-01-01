@@ -1,8 +1,11 @@
 import argparse
+import subprocess
 
 from zowe.zos_jobs_for_zowe_sdk import Jobs
 
 from config import connection
+from find_error_code import get_error_code
+from scrape import fetch_help
 
 parser = argparse.ArgumentParser(
     description="Submit jobs to Mainframe and in case of error get the details on the error code."
@@ -39,3 +42,7 @@ if status["retcode"] == "CC 0000":
 else:
     print(status)
     print("Downloading Job output files for analysis...", end='\r')
+    subprocess.call(["zowe", "jobs", "download", "output", str(job["jobid"])])
+    error_code = get_error_code(job["jobid"])
+    print("Error Code: " + str(error_code))
+    fetch_help(error_code)
