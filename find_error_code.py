@@ -1,6 +1,5 @@
 from pathlib import Path
 
-# jobid = "JOB00091"
 jes_files = []
 
 
@@ -16,9 +15,9 @@ def find_jes_files(dir_path):
 
 
 def get_error_code(jobid):
+    print("Job ID: " + jobid)
     path = Path("output/" + jobid)
     find_jes_files(path)
-    # print(jes_files)
     for jes_file in jes_files:
         with open(jes_file) as jes:
             for line in jes:
