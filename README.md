@@ -34,4 +34,4 @@ Please install the below mentioned packages before using this project:
 
 If the job is completed successfully, that's great! But if an error occurs then the script will do it's work. ;-)
 
-![](MtM_2020_-_Made_with_PosterMyWall.png)
+![](MTM2020-min.png)
